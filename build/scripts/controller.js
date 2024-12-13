@@ -47,10 +47,10 @@ class weatherController {
                         document.querySelector('#temperature').innerText = this.ToCelsii(json.main.temp);
                         document.querySelector('#condition').innerText = json.weather[0].main;
                         //document.querySelector('#weather-pic').src = "https://openweathermap.org/img/wn/"+`${json.weather[0].icon}`+"@2x.png";
-                        document.querySelector('#weather-pic').src = `../build/img/condition-bg/icons/${json.weather[0].icon}.png`;
+                        document.querySelector('#weather-pic').src = `build/img/condition-bg/icons/${json.weather[0].icon}.png`;
                         let condition = json.weather[0].main.toLowerCase();
                         document.body.classList.add(condition);
-                        document.body.style.backgroundImage = `url('../build/img/condition-bg/${condition}.webp')`;
+                        document.body.style.backgroundImage = `url('build/img/condition-bg/${condition}.webp')`;
                         document.body.style.backgroundSize = "cover";
                         //console.log(this.ToCelii(json.main.temp)+ "/" + json.weather[0].main + "/" + json.weather[0].icon + json)
                     })
