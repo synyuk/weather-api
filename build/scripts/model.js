@@ -1,7 +1,8 @@
 class weatherModel {
-    constructor(key) {
+    constructor(key,city,iconName) {
         this.key = key;
         this.city = "Kiev";
+        this.iconName = iconName;
     }
 }
 

@@ -17,9 +17,15 @@ class weatherView{
         main.prepend(title, input);
     }
 
-    createBlock(city, takeDescription){
+    createBlock(city, iconName, takeData){
         let div = document.createElement('div');
         div.id = "weather-wrapper";
+        setTimeout(() => {
+            div.classList.add('show');
+        }, 100);
+
+        let cityName = document.createElement('div');
+        cityName.id = "city-name";
 
         let temperature = document.createElement('div');
         temperature.id = "temperature";
@@ -34,23 +40,15 @@ class weatherView{
         div.innerText = city;
         document.body.querySelector('.city-input').after(div);
         div.append(temperature, condition, pic);
-        let url = "https://api.openweathermap.org/geo/1.0/direct?q=" + city +"&limit=5&appid="+ this.model.key;
-        fetch(url)
-            .then(response => response.json())
-            .then(json => {
-                    let lat = json[0].lat;
-                    let lon = json[0].lon;
-                takeDescription(lat,lon);
-            })
-            .catch(error => div.innerHTML = '<span class="error">' + city + ' такого міста не існує, спробуйте ще раз</span>');
+        takeData();
     }
 
     clear(){
         const cityBlock = document.querySelector('#weather-wrapper');
+        document.body.className = '';
         if (cityBlock) {
-            cityBlock.innerHTML = '';
-        } else {
-            console.warn('Элемент .city-block не найден на странице.');
+            cityBlock.remove();
+            cityBlock.classList.add('show');
         }
     }
 }

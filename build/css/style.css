@@ -3,11 +3,17 @@ html, body{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 14px;
+}
+*{
+    font-family: "Caveat", cursive;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
 
 body{
-    background: url('../img/weather.webp') 50% 50% no-repeat;
-    background-size: cover;
+    background: #fff;
+    transition: background-color 3s ease, background-image 1s ease;
 }
 
 #weather-main, #weather-wrapper{
@@ -22,41 +28,56 @@ body{
     position: relative;
     background: rgb(255 255 255 / 60%);
     border-radius: 16px;
-    padding: 15px;
-    box-shadow: 1px 2px 2px #ccc;
-    border: 2px solid #ecc84b;
+    padding: 30px 20px 15px 20px;
+    box-shadow: 1px 4px 10px #ffffff5e;
+    border: 2px solid #000000;
 }
 
 #weather-title{
-    font-size: 17px;
-    font-family: Vernada, Arial, sans-serif;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 700;
     text-transform: uppercase;
 }
 
 .city-input{
     height: 40px;
     border-radius: 6px;
-    border: 1px solid #ccc;
+    border: 1px solid #000000;
     padding: 0 10px;
     color: #000;
-    font-size: 16px;
-    width: 300px;
+    font-size: 24px;
+    width: 320px;
     max-width: 100%;
-    margin-bottom: 70px;
 }
 
 #weather-wrapper{
-    position: absolute;
     flex-direction: row;
-    font-size: 16px;
+    font-size: 24px;
     font-weight: 600;
     text-transform: uppercase;
-    height: 50px;
+    height: 60px;
     bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+#weather-wrapper.show {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .error{
     color: red;
-    font-size: 14px;
+    font-size: 24px;
+    line-height: 1;
+    font-weight: 400;
+    max-width: 300px;
+    text-transform: lowercase;
+    text-align: center;
+}
+
+#weather-pic{
+    width: 60px;
+    height: 60px;
 }
