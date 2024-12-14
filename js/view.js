@@ -17,7 +17,7 @@ class weatherView{
         main.prepend(title, input);
     }
 
-    createBlock(city, iconName, takeData){
+    createView(){
         let div = document.createElement('div');
         div.id = "weather-wrapper";
         setTimeout(() => {
@@ -29,18 +29,33 @@ class weatherView{
 
         let temperature = document.createElement('div');
         temperature.id = "temperature";
+        temperature.innerText = this.model.temp;
 
         let condition = document.createElement('div');
         condition.id = "condition";
+        condition.innerText = this.model.cond;
 
         let pic = document.createElement('img');
         pic.id = "weather-pic";
-        //pic.src = "https://openweathermap.org/img/wn/10d@2x.png";
+        pic.src = `img/condition-bg/icons/${this.model.icon}.png`;
 
-        div.innerText = city;
+        document.body.classList.add(this.model.cond);
+        document.body.style.backgroundImage = `url('img/condition-bg/${this.model.cond}.webp')`;
+        document.body.style.backgroundSize = "cover";
+
+        div.innerText = this.model.city;
         document.body.querySelector('.city-input').after(div);
         div.append(temperature, condition, pic);
-        takeData();
+    }
+
+    createViewError(){
+        let div = document.createElement('div');
+        div.id = "weather-wrapper";
+        setTimeout(() => {
+            div.classList.add('show');
+        }, 100);
+        div.innerHTML = '<span class="error"> Такого міста не існує,<br> спробуйте ще раз</span>';
+        document.body.querySelector('.city-input').after(div);
     }
 
     clear(){
@@ -51,6 +66,7 @@ class weatherView{
             cityBlock.classList.add('show');
         }
     }
+
 }
 
 export default weatherView;
