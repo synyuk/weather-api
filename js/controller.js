@@ -16,7 +16,6 @@ class weatherController {
                 this.displayWeatherData(this.model.city);
             }
         });
-
     }
 
     addInput(){
