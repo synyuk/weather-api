@@ -1,5 +1,4 @@
 
-
 class weatherController {
     constructor(model, view) {
         this.model = model;
@@ -21,6 +20,7 @@ class weatherController {
     addInput(){
         this.view.createInput();
     }
+
     displayWeatherData(city) {
         this.view.clear();
         this.fetchWeatherData();
@@ -56,12 +56,6 @@ class weatherController {
     }
 
 }
-import weatherView from "./view.js";
-import weatherModel from "./model.js"
-import {key} from "../config.js";
 
-const model = new weatherModel(key);
-const view = new weatherView(model);
-const weather = new weatherController(model, view);
 
 export default weatherController;
