@@ -27,14 +27,12 @@ class weatherController {
     }
 
     fetchWeatherData(){
-        let url = "https://api.openweathermap.org/geo/1.0/direct?q=" + this.model.city +"&limit=5&appid="+ this.model.key;
-        fetch(url)
+        fetch(this.model.getUrl())
             .then(response => response.json())
             .then(json => {
-                let lat = json[0].lat;
-                let lon = json[0].lon;
-                let url2 = "https://api.openweathermap.org/data/2.5/weather?lat="+ lat +"&lon="+ lon +"&lang=ua&appid=8b8256c5c05f81ebeada2d8c1a94e713";
-                fetch(url2)
+                this.model.lat = json[0].lat;
+                this.model.lon = json[0].lon;
+                fetch(this.model.getUrl2())
                     .then(response => response.json())
                     .then(json => {
                         this.model.temp = this.ToCelsii(json.main.temp);
